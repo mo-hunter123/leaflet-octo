@@ -1,0 +1,10 @@
+sudo docker rm -f back-back
+sudo docker build -t nhd .
+sudo docker run --name back-back -d -p 49160:8080 nhd 
+sudo docker logs back-back
+sudo docker exec -it testmongo bash
+docker run -d -p 27017:27017 --name test-mongo mongo:4.0.4
+
+
+sudo docker run --rm -ti --net tulip-net -d -p 27017:27017 --name testmongo mongo:4.0.4
+sudo docker run --rm -ti --net tulip-net -d -p 49160:8080 --name back-back  nhd 

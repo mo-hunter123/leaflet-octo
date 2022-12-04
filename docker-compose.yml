@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  dbmongo: 
+    image: mongo
+    ports: 
+      - "27017:27017"
+  web: 
+    depends_on: 
+      - dbmongo
+    build: .
+    ports:
+      - "4000:8080"
+    volumes:
+      - db:/data/db
+volumes:
+  db:
